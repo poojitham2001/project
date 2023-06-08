@@ -1,0 +1,119 @@
+<app-frontend-header></app-frontend-header>
+<!-- bradcam_area  -->
+<div class="myh">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="text-center">
+          <h3 style="font-size: 21px;">Search Your Flight</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ bradcam_area  -->
+<!--================Vehicle Area =================-->
+<section class="vehicle_area" style="padding: 50px 0px;">
+  <div class="container">
+    <h2 style="color: #000">Search Your Flight</h2>
+    <form class="form-inline" style="border: 1px solid #CCC; background: #074471;">
+      <div class="form-group" style="margin: 10px;">
+        <label for="email" style="margin: 10px; color: white;">Search : </label>
+        <select [(ngModel)]="from_city" style="height: 40px; width: 200px;"[ngModelOptions]="{standalone: true}" class="form-select form-control" name="vehicle_to" required>
+          <option value="0">Select From City</option>
+          <option *ngFor='let city_data of city' [value]="city_data.city_id">
+            {{city_data.city_name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group" style="margin: 10px;">
+        <select [(ngModel)]="to_city" style="height: 40px; width: 200px;"[ngModelOptions]="{standalone: true}" class="form-select form-control" name="vehicle_to" required>
+          <option value="0">Select To City</option>
+          <option *ngFor='let city_data of city' [value]="city_data.city_id">
+            {{city_data.city_name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group" style="margin: 10px;">
+        <select [(ngModel)]="total_passengar" style="height: 40px; width: 200px;" [ngModelOptions]="{standalone: true}" class="form-select form-control" name="vehicle_to" required>
+          <option value="0">Total Passengar</option>
+          <option value="1">1 Passengar</option>
+          <option value="2">2 Passengar</option>
+          <option value="3">3 Passengar</option>
+          <option value="4">4 Passengar</option>
+          <option value="5">5 Passengar</option>
+          <option value="6">6 Passengar</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin: 10px;">
+        <input [(ngModel)]="booking_date" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+          id="email" style="width: 200px;" placeholder="Travel Date" min="{{todayDate}}">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-success" style="width: 150px;"
+          (click)="searchVehicle()">Search</button>&nbsp;&nbsp;
+        <button type="reset" class="btn btn-danger" style="width: 150px;" (click)="resetSearch()">Reset</button>
+      </div>
+    </form>
+    <div class="row" *ngIf="showData">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="let vehicle of vehicle">
+        <div class="my-list">
+          <img src="http://127.0.0.1:8080/uploads/{{vehicle.vehicle_image_filename}}"
+            style="height: 250px; width: 100%;" alt="dsadas" />
+          <h3>{{vehicle.vehicle_name}}</h3>
+          <span>Bussiness Fare : {{vehicle.route_business_fare}}</span>
+          <span class="pull-right">Economy Fare : {{vehicle.route_economy_fare}}</span>
+          <div class="offer" style="color: red; font-weight: bold;">Desstination : {{vehicle.route_from_name}} to {{vehicle.route_to_name}}</div>
+          <div class="detail" style="padding: 10px">
+            <h2 style="font-size: 13px; border-bottom: 1px solid #CCC;">Flight Details</h2>
+            <table class="table table-striped table-bordered table-hover" style="width: 100%">
+              <tbody>
+              <tr>
+                <th>Flight No : </th>
+                <td>{{vehicle.vehicle_no}}</td>
+              </tr>
+              <tr>
+                <th>From City : </th>
+                <td>{{vehicle.route_from_name}}</td>
+              </tr>
+              <tr>
+                <th>To City : </th>
+                <td>{{vehicle.route_to_name}}</td>
+              </tr>
+              <tr>
+                <th>Departure Time : </th>
+                <td>{{vehicle.route_from_departure}}</td>
+              </tr>
+              <tr>
+                <th>Arrival Time : </th>
+                <td>{{vehicle.route_from_arrival}}</td>
+              </tr>
+              <tr>
+                <th>Travel Duration : </th>
+                <td>{{vehicle.route_duration}}</td>
+              </tr>
+              <tr>
+                <th>Economy Fare : </th>
+                <td>{{vehicle.route_economy_fare}}</td>
+              </tr>
+              <tr>
+                <th>Bussiness Fare : </th>
+                <td>{{vehicle.route_business_fare}}</td>
+              </tr>
+              <tbody>
+            </table>
+            <a routerLink="/vehicle-details/{{vehicle.route_id}}" class="btn btn-primary"
+              style="color: #FFFFFF !important; font-weight: bold;">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px;" *ngIf = "!showData">
+      <div class="alert alert-{{error}}" role="alert">
+        {{msg}}
+      </div>
+    </div>
+  </div>
+</section>
+<!--================Vehicle Area =================-->
+<app-frontend-footer></app-frontend-footer>

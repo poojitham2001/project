@@ -1,0 +1,83 @@
+
+<app-frontend-header></app-frontend-header>
+
+
+<!-- Start Sample Area -->
+    <!-- service_area  -->
+    <div class="service_area">
+      <div class="container">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Advanced Tables -->
+              <div class="card">
+                <div class="card-content">
+                  <div class="table-responsive">
+                    <h2 class="myh">Booking Details</h2>
+                    <table class="table table-striped table-hover" style="font-size: 13px;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th class="nbg" style="width: 25%;">Booking ID</th>
+                        <td style="width: 25%;">{{orders.order_id}}</td>
+                        <th style="width: 25%;">Booking Date</th>
+                        <td style="width: 25%;">{{orders.order_date}}</td>
+                      </tr>
+                      <tr>
+                        <th class="nbg" style="width: 25%;">Flight No</th>
+                        <td style="width: 25%;">{{orders.vehicle_no}}</td>
+                        <th style="width: 25%;">Travel Date</th>
+                        <td style="width: 25%;">{{orders.order_travel_date}}</td>
+                      </tr>
+                      <tr>
+                        <th class="nbg" style="width: 25%;">From City</th>
+                        <td style="width: 25%;">{{orders.route_from_name}}</td>
+                        <th style="width: 25%;">To City</th>
+                        <td style="width: 25%;">{{orders.route_to_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Customer Name</th>
+                        <td>{{orders.customer_name}}</td>
+                        <th>Contact Number</th>
+                        <td>{{orders.customer_mobile}}</td>
+                      </tr>
+                      <tr>
+                        <th>Payment Status</th>
+                        <td>{{orders.order_status}}</td>
+                        <th>Total Amount</th>
+                        <td>{{orders.order_total}}</td>
+                      </tr>
+                    </thead>
+                  </table>
+                  </div>
+                  <div class="table-responsive" style="margin-top: 20px;">
+                    <h2 class="myh">All Passengars</h2>
+                    <table class="table table-striped table-hover" style="font-size: 13px;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let passengar of passengar | async">
+                        <td>{{passengar.passengar_name}}</td>
+                        <td>{{passengar.passengar_age}}</td>
+                        <td>{{passengar.passengar_gender}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="text-align: center;">
+                    <button type="button" class="btn btn-danger" onclick="window.print()">Print Receipt</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!--/ service_area  -->
+<!-- End Sample Area -->
+<app-frontend-footer></app-frontend-footer>

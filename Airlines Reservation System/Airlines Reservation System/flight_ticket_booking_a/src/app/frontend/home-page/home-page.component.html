@@ -1,0 +1,93 @@
+<app-frontend-header></app-frontend-header>
+<!-- slider_area_start -->
+<div class="slider_area">
+  <div class="single_slider  d-flex align-items-center slider_bg_1">
+    <div class="container" style="z-index: 999;">
+      <div class="row align-items-center">
+        <div class="col-xl-3" style="padding:10px; text-align: center;">
+          <h2 style="color: #fff">Search Your Flight</h2>
+          <form class="form-inline" style="border: 1px solid #CCC; background: #074471; padding: 10px;">
+            <div class="form-group" style="margin: 10px;">
+              <select [(ngModel)]="from_city" style="height: 40px; width: 265px;" [ngModelOptions]="{standalone: true}"
+                class="form-select form-control" name="vehicle_to" required>
+                <option value="0">Select From City</option>
+                <option *ngFor='let city_data of city' [value]="city_data.city_id">
+                  {{city_data.city_name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 10px;">
+              <select [(ngModel)]="to_city" style="height: 40px; width: 265px;" [ngModelOptions]="{standalone: true}"
+                class="form-select form-control" name="vehicle_to" required>
+                <option value="0">Select To City</option>
+                <option *ngFor='let city_data of city' [value]="city_data.city_id">
+                  {{city_data.city_name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 10px;">
+              <select [(ngModel)]="total_passengar" style="height: 40px; width: 265px;"
+                [ngModelOptions]="{standalone: true}" class="form-select form-control" name="vehicle_to" required>
+                <option value="0">Total Passengar</option>
+                <option value="1">1 Passengar</option>
+                <option value="2">2 Passengar</option>
+                <option value="3">3 Passengar</option>
+                <option value="4">4 Passengar</option>
+                <option value="5">5 Passengar</option>
+                <option value="6">6 Passengar</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 10px;">
+              <input [(ngModel)]="booking_date" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+                id="email" style="width: 265px;" placeholder="Travel Date">
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-success" style="width: 130px;"
+                (click)="searchVehicle()">Search</button>&nbsp;&nbsp;
+              <button type="reset" class="btn btn-danger" style="width: 130px;" (click)="resetSearch()">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider_area_end -->
+
+<!-- Start Sample Area -->
+<section class="sample-text-area">
+  <div class="container box_1170">
+    <h3 class="text-heading">Top Routes and Destinations - Airlines Reservation System</h3>
+      <div class="row">
+        <ng-container *ngFor="let vehicle of vehicle | async;  index as i"> 
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  *ngIf="i < 4">
+            <div class="my-list">
+              <img src="http://127.0.0.1:8080/uploads/{{vehicle.vehicle_image_filename}}"
+                style="height: 250px; width: 100%;" alt="dsadas" />
+              <h3>{{vehicle.vehicle_name}}</h3>
+              <span>Bussiness Fare : {{vehicle.route_business_fare}}</span>
+              <span class="pull-right">Economy Fare : {{vehicle.route_economy_fare}}</span>
+              <div class="offer" style="color: red; font-weight: bold;">Desstination : {{vehicle.route_from_name}} to
+                {{vehicle.route_to_name}}</div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+    <h3 class="text-heading" style="margin-top: 20px">About Airlines Reservation System</h3>
+    <p class="sample-text">
+      The ticket, in either form, is required to obtain a boarding pass during check-in at the airport. Then with the
+      boarding pass and the attached ticket, the passenger is allowed to board the aircraft. An airline ticket is a
+      document or electronic record, issued by an airline or a travel agency, that confirms that an individual is
+      entitled to a seat on a flight on an aircraft. The airline ticket may be one of two types: a paper ticket, which
+      comprises coupons or vouchers; and an electronic ticket (commonly referred to as an e-ticket).
+      The ticket, in either form, is required to obtain a boarding pass during check-in at the airport. Then with the
+      boarding pass and the attached ticket, the passenger is allowed to board the aircraft. An airline ticket is a
+      document or electronic record, issued by an airline or a travel agency, that confirms that an individual is
+      entitled to a seat on a flight on an aircraft. The airline ticket may be one of two types: a paper ticket, which
+      comprises coupons or vouchers; and an electronic ticket (commonly referred to as an e-ticket).
+    </p>
+  </div>
+</section>
+<!-- End Sample Area -->
+<app-frontend-footer></app-frontend-footer>
